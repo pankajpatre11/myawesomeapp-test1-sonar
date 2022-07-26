@@ -61,7 +61,7 @@ stage('SonarQube analysis') {
                      ]],
                     credentialsId: 'nexusid',
                     groupId: 'com.example',
-                    nexusUrl: '44.201.219.187:8081',
+                    nexusUrl: '54.172.86.109:8081',
                     nexusVersion: 'nexus3',
                     protocol: 'http',
                     repository: nexusRepoName ,
