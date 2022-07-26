@@ -9,7 +9,7 @@ pipeline
      returnStdout: true)
         imageName = "myapp"
         registryCredentials = "nexusid"
-        registry = "44.201.219.187:8081"
+        registry = "54.172.86.109:8083"
         dockerImage = ''
     }
     options {
