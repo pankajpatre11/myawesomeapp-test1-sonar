@@ -36,14 +36,25 @@ pipeline
                    }
 		  }
                             
-
-   stage('SQuality Gate') {
-     steps {
-       timeout(time: 1, unit: 'MINUTES') {
-       waitForQualityGate abortPipeline: true
-       }
-  }
-}
+ stage('SonarQube analysis') {
+            
+             
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                   sh "mvn clean install"
+                    sh "mvn sonar:sonar -Dsonar.login='e1ddcc1c5d09f8131f66537b11a48dd95387c806'"
+                   
+                }
+            }
+        }
+        
+       stage('SQuality Gate') {
+          steps {
+                 timeout(time: 1, unit: 'MINUTES') {
+                  waitForQualityGate abortPipeline: true
+               }
+               }
+           }
         stage('Upload War To Nexus'){
             steps{ 
                 script{
