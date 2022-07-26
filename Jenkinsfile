@@ -57,27 +57,10 @@ pipeline
                }
            }
 
-        stage('Upload War To Nexus'){
-            steps{ 
-                script{
-                def mavenPom = readMavenPom file: 'pom.xml'
-                def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "maven-snapshots" : "maven-releases"
-                nexusArtifactUploader artifacts: 
-                    [[artifactId: 'maven-project',
-                      classifier: '',
-                      file: "target/maven-project-${mavenPom.version}.war",
-                      type: 'war'
-                     ]],
-                    credentialsId: 'nexusid',
-                    groupId: 'com.example',
-                    nexusUrl: '54.172.86.109:8081',
-                    nexusVersion: 'nexus3',
-                    protocol: 'http',
-                    repository: nexusRepoName ,
-                    version: "${mavenPom.version}"
-                }
-            }
-        }
+
+	    
+	    
+	    
         stage('Build Docker image')
         {
             steps
