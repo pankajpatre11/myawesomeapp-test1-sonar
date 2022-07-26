@@ -23,24 +23,20 @@ pipeline
                  sh script: 'mvn clean package'
             }
          }
-       
-stage('SonarQube analysis') {
-    environment {
-      SCANNER_HOME = tool 'Sonar-scanner'
-    }
-    steps {
-    withSonarQubeEnv(credentialsId: 'sonarrr', installationName: 'SonarQube') {
-         sh '''$SCANNER_HOME/bin/sonar-scanner \
-         -Dsonar.projectKey=pankajpatre11_simple-app \
-         -Dsonar.projectName=maven-project \
-         -Dsonar.sources=src/ \
-         -Dsonar.java.binaries=target/classes/ \
-         -Dsonar.exclusions=src/test/java/****/*.java \
-         -Dsonar.java.libraries=/var/lib/jenkins/.m2/**/*.jar \
-         -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
-       }
-     }
-}
+         stage('SonarQubeServer') {
+		  steps {
+                        sh '''
+                        mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar\
+			-Dsonar.projectKey=pankajpatre11_simple-app \
+			-Dsonar.projectName=PankajPatre \
+                        -Dsonar.java.coveragePlugin=jacoco \
+                        -Dsonar.jacoco.reportPaths=target/jacoco.exec \
+    			-Dsonar.junit.reportsPaths=target/surefire-reports
+    			'''
+                   }
+		  }
+                            
+
    stage('SQuality Gate') {
      steps {
        timeout(time: 1, unit: 'MINUTES') {
