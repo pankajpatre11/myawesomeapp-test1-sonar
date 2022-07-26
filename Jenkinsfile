@@ -101,7 +101,7 @@ pipeline
             steps
             {
                 script{
-                     docker.withRegistry('http://'+registry, registryCredentials)
+                   docker.withRegistry("https://pankajbpatre421989.jfrog.io", "Parth@421989")
                     {
                      dockerImage.push("latest")
                      }
