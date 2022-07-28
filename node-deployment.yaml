@@ -15,7 +15,7 @@ spec:
      spec:
          containers:
            - name: nodejsapp-erp
-             image: "bharathirajatut/erp:1.0"
+             image: "pankajpatre11/erp:1.0"
   replicas: 1
   selector:
     matchLabels:
