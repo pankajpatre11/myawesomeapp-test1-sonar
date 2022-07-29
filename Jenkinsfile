@@ -101,7 +101,7 @@ pipeline
             steps
             {
                 script{
-                   docker.withRegistry("18.208.249.204:8081", "nexusid")
+                   docker.withRegistry("docker.io", "dockerhub")
                     {
                      dockerImage.push("latest")
                      }
