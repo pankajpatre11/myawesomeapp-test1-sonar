@@ -101,7 +101,7 @@ pipeline
             steps
             {
                 script{
-                   docker.withRegistry("docker.io", "dockerhub")
+                   docker.withRegistry("https://registry.hub.docker.com", "dockerhub")
                     {
 	           //  sh 'docker tag myapp pankajpatre11/myapp'
                      dockerImage.push("latest")
