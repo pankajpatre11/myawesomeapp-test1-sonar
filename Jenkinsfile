@@ -100,10 +100,10 @@ pipeline
         {
             steps
             {
-                script{
-			
+                script{ 
+			sh 'docker tag myapp pankajpatre11/myapp'			
 			sh 'docker login -u pankajpatre11 -p Pankaj@2211' 
-		        sh 'docker push myapp' 
+		        sh 'docker push pankajpatre11/myapp' 
                   // docker.withRegistry("https://registry.docker.io", "dockerhub")
                    // {
 	           //  sh 'docker tag myapp pankajpatre11/myapp'
