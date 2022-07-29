@@ -9,7 +9,7 @@ pipeline
      returnStdout: true)
         imageName = "myapp"
         registryCredentials = "nexusid"
-        registry = "54.172.86.109:8083"
+        registry = "18.208.249.204:8083"
         dockerImage = ''
     }
     options {
@@ -76,7 +76,7 @@ pipeline
                      ]],
                     credentialsId: 'nexusid',
                     groupId: 'com.example',
-                    nexusUrl: '54.172.86.109:8081',
+                    nexusUrl: '18.208.249.204:8081',
                     nexusVersion: 'nexus3',
                     protocol: 'http',
                     repository: nexusRepoName ,
@@ -101,7 +101,7 @@ pipeline
             steps
             {
                 script{
-                   docker.withRegistry("https://pankajbpatre421989.jfrog.io", "Parth@421989")
+                   docker.withRegistry("18.208.249.204:8081", "nexusid")
                     {
                      dockerImage.push("latest")
                      }
