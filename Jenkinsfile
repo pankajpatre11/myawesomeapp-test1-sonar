@@ -8,9 +8,9 @@ pipeline
      script: "printf \$(git rev-parse --short ${GIT_COMMIT})",
      returnStdout: true)
         imageName = "myapp"
-        registryCredentials = "nexusid"
+        registryCredentials = "dockerhub"
         registry = "18.208.249.204:8083"
-        dockerImage = 'myapp'
+        dockerImage = ''
     }
     options {
        buildDiscarder logRotator(daysToKeepStr: '5', numToKeepStr: '7')
