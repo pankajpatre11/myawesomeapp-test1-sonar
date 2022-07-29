@@ -109,6 +109,7 @@ pipeline
             }
          }	    
 	    
+	    
 stage('Deploy to K8s')
 		{
 			steps{
