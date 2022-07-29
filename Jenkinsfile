@@ -101,10 +101,13 @@ pipeline
             steps
             {
                 script{
-                   docker.withRegistry("https://registry.docker.io", "dockerhub")
-                    {
+			
+			sh 'docker login -u pankajpatre11 -p Pankaj@2211' 
+		        sh 'docker push myapp' 
+                  // docker.withRegistry("https://registry.docker.io", "dockerhub")
+                   // {
 	           //  sh 'docker tag myapp pankajpatre11/myapp'
-                     dockerImage.push("latest")
+                    // dockerImage.push("latest")
                      }
                 }
             }
