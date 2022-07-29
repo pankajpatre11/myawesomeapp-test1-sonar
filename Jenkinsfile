@@ -108,7 +108,7 @@ pipeline
                    // {
 	           //  sh 'docker tag myapp pankajpatre11/myapp'
                     // dockerImage.push("latest")
-                     }
+                    // }
                 }
             }
          }	    
