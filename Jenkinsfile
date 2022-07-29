@@ -10,7 +10,7 @@ pipeline
         imageName = "myapp"
         registryCredentials = "nexusid"
         registry = "18.208.249.204:8083"
-        dockerImage = ''
+        dockerImage = 'myapp'
     }
     options {
        buildDiscarder logRotator(daysToKeepStr: '5', numToKeepStr: '7')
