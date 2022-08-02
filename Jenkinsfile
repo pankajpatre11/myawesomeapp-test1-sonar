@@ -106,7 +106,7 @@ pipeline
 	      steps{
        
                 kubernetesDeploy(
-                    configs: 'my-simple-app/node-deployment.yaml',
+                    configs: 'node-deployment.yaml',
                     kubeconfigId: 'K8S',
                     enableConfigSubstitution: true
                     )               
