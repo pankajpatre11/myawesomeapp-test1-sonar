@@ -51,7 +51,7 @@ pipeline
         
 
 
-        stage('Upload War To Nexus'){
+        stage('Upload War To Repo'){
             steps{ 
                 script{
                 def mavenPom = readMavenPom file: 'pom.xml'
@@ -84,7 +84,7 @@ pipeline
                 }
             }
          }
-      stage('Upload Docker image into Nexus')
+      stage('Upload Docker image into Repo')
         {
             steps
             {
