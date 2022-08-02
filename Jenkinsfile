@@ -114,16 +114,7 @@ pipeline
          }	    
 	    
 	    
-      stage ('K8S Deploy') {
-	      steps{
-       
-                kubernetesDeploy(
-                    configs: 'MyAwesomeApp/springboot-lb.yaml',
-                    kubeconfigId: 'K8S',
-                    enableConfigSubstitution: true
-                    )               
-        }
-      }
+    
 	    
 	    
     }
