@@ -106,7 +106,7 @@ pipeline
 	      steps{
        
                 kubernetesDeploy(
-                    configs: 'node-deployment.yaml',
+                    configs: 'springboot-lb.yaml',
                     kubeconfigId: 'K8S',
                     enableConfigSubstitution: true
                     )               
