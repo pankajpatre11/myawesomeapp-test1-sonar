@@ -96,7 +96,7 @@ pipeline
                   docker.withRegistry("https://docker.io", "dockerhub")
                    {
 	            sh 'docker tag myapp pankajpatre11/myapp'
-                    dockerImage.push("latest")
+                    dockerImage.push("pankajpatre11/myapp:latest")
                    }
                 }
             }
