@@ -93,7 +93,7 @@ pipeline
 		//	sh 'docker login -u pankajpatre11 -p Pankaj@2211' 
 		 //       sh 'docker push pankajpatre11/myapp' 
 		//	sh 'pwd'
-                  docker.withRegistry("https://registry.docker.io", "dockerhub")
+                  docker.withRegistry("https://docker.io", "dockerhub")
                    {
 	            sh 'docker tag myapp pankajpatre11/myapp'
                     dockerImage.push("latest")
