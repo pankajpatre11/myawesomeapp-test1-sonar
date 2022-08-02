@@ -101,7 +101,17 @@ pipeline
             }
          }	    
 	    
-	    
+  stage ('K8S Deploy') {
+	      steps{
+       
+                kubernetesDeploy(
+                    configs: 'my-simple-app/node-deployment.yaml',
+                    kubeconfigId: 'K8S',
+                    enableConfigSubstitution: true
+                    )               
+        }
+      }
+	  	    
     
 	    
 	    
