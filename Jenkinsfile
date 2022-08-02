@@ -49,19 +49,7 @@ pipeline
             }
         }
         
-       stage('SQuality Gate') {
-          steps {
-                 timeout(time: 1, unit: 'MINUTES') {
-                  waitForQualityGate abortPipeline: false
-               }
-               }
-	       post{
-		       always {
-			       junit allowEmptyResults: true , testResults: '**/target/surefire-reports/*.xml'
-			       jacoco(execPattern:  '**/target/*.exec')
-		       }
-	       }
-           }
+
 
         stage('Upload War To Nexus'){
             steps{ 
