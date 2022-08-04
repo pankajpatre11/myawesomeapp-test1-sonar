@@ -4,6 +4,7 @@ pipeline
 
     environment{
 	SONAR_TOKEN = "${SONAR_TOKEN}"
+	SONAR = "sonarrr"
         GIT_COMMIT_SHORT = sh(
      script: "printf \$(git rev-parse --short ${GIT_COMMIT})",
      returnStdout: true)
@@ -22,6 +23,10 @@ pipeline
             steps
             {
                  sh script: 'mvn clean package'
+		 sh SONAR
+		 sh $SONAR
+		 sh "echo $SONAR"
+		 sh "echo ${SONAR}" 
 		 sh "echo $SONAR_TOKEN"
 		 sh "echo ${SONAR_TOKEN}"
 		 sh "echo ${env.SONAR_TOKEN}"
