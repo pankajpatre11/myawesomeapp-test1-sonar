@@ -52,7 +52,7 @@ pipeline
                      ]],
                     credentialsId: 'nexusid',
                     groupId: 'com.example',
-                    nexusUrl: '18.208.249.204:8081',
+                    nexusUrl: '54.226.252.254:8081',
                     nexusVersion: 'nexus3',
                     protocol: 'http',
                     repository: nexusRepoName ,
