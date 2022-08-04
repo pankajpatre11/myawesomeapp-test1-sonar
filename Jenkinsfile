@@ -3,10 +3,6 @@ pipeline
     agent any
 
     environment{
-	
-	GIT_COMMIT_SHORT = sh(
-     script: "printf \$(git rev-parse --short ${GIT_COMMIT})",
-     returnStdout: true)
         imageName = "pankajpatre11/myapp"
         registryCredentials = "dockerhub"
         registry = "18.208.249.204:8083"
