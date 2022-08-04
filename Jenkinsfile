@@ -22,6 +22,9 @@ pipeline
             steps
             {
                  sh script: 'mvn clean package'
+		 sh "echo $SONAR_TOKEN"
+		 sh "echo ${SONAR_TOKEN}"
+		 sh "echo ${env.SONAR_TOKEN}"
             }
          }
          stage('SonarQubeServer') {
