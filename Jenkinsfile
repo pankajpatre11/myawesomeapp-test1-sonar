@@ -23,8 +23,6 @@ pipeline
             steps
             {
                  sh script: 'mvn clean package'
-		 sh SONAR
-		 sh $SONAR
 		 sh "echo $SONAR"
 		 sh "echo ${SONAR}" 
 		 sh "echo $SONAR_TOKEN"
