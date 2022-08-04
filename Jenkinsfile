@@ -43,7 +43,7 @@ pipeline
             steps {
                 withSonarQubeEnv('SonarQube') {
                    sh "mvn clean install"
-                    sh "mvn sonar:sonar -Dsonar.login='e1ddcc1c5d09f8131f66537b11a48dd95387c806'"
+                    sh "mvn sonar:sonar -Dsonar.login=${env.SONAR_TOKEN}"
                    
                 }
             }
@@ -89,13 +89,8 @@ pipeline
             steps
             {
                 script{ 
-		//	sh 'docker tag myapp pankajpatre11/myapp'			
-		//	sh 'docker login -u pankajpatre11 -p Pankaj@2211' 
-		 //       sh 'docker push pankajpatre11/myapp' 
-		//	sh 'pwd'
                   docker.withRegistry("https://docker.io", "dockerhub")
                    {
-	            //sh 'docker tag myapp pankajpatre11/myapp'
                     sh 'docker images'
                     dockerImage.push("latest")
                    }
