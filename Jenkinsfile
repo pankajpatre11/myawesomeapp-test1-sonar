@@ -3,8 +3,7 @@ pipeline
     agent any
 
     environment{
-	//SONAR_TOKEN = "ebe715a7d0fdd4ffb924ae703699a6131009211a"
-	SONAR_TOKEN = $SONAR_TOKEN
+	SONAR_TOKEN = "ebe715a7d0fdd4ffb924ae703699a6131009211a"
 	GIT_COMMIT_SHORT = sh(
      script: "printf \$(git rev-parse --short ${GIT_COMMIT})",
      returnStdout: true)
@@ -39,7 +38,7 @@ pipeline
                    }
 		  }
                             
- stage('SonarQube analysis') {
+        stage('SonarQube analysis') {
             
              
             steps {
@@ -106,7 +105,7 @@ pipeline
             }
          }	    
 	    
-  stage ('K8S Deploy') {
+     stage ('K8S Deploy') {
 	      steps{
        
                 kubernetesDeploy(
