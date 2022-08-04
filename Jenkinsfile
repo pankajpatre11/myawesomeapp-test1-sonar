@@ -3,9 +3,9 @@ pipeline
     agent any
 
     environment{
-        imageName = "pankajpatre11/myapp"
-        registryCredentials = "nexusid"
-        registry = "54.226.252.254:8083"
+        imageName = "myapp"
+        registryCredentials = "nexusid1"
+        registry = "35.172.201.214:8083"
         dockerImage = ''
     }
     options {
@@ -52,7 +52,7 @@ pipeline
                      ]],
                     credentialsId: 'nexusid',
                     groupId: 'com.example',
-                    nexusUrl: '54.226.252.254:8081',
+                    nexusUrl: '35.172.201.214:8081',
                     nexusVersion: 'nexus3',
                     protocol: 'http',
                     repository: nexusRepoName ,
@@ -76,11 +76,6 @@ pipeline
         {
             steps
             {
-                // script{ 
-		//	sh 'docker tag myapp pankajpatre11/myapp'			
-		//	sh 'docker login -u pankajpatre11 -p Pankaj@2211' 
-		//        sh 'docker push pankajpatre11/myapp' 
-		//	sh 'pwd'
                script{
                      docker.withRegistry('http://'+registry, registryCredentials)
                     {
