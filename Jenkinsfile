@@ -39,7 +39,7 @@ pipeline {
               [artifactId: 'maven-project',
                 classifier: '',
                 file: "target/maven-project-${mavenPom.version}.war",
-                type: 'war'
+                type: 'jar'
               ]
             ],
             credentialsId: 'nexusid1',
