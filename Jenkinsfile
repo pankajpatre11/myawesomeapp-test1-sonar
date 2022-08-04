@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh script: 'mvn -f MyAwesomeApp/pom.xml clean package'
+        sh script: 'mvn clean package'
       }
     }
 
@@ -22,7 +22,7 @@ pipeline {
       steps {
 
         withSonarQubeEnv('SonarQube') {
-          sh "mvn -f MyAwesomeApp/pom.xml sonar:sonar\
+          sh "mvn sonar:sonar\
 		      -Dsonar.java.coveragePlugin=jacoco \
                       -Dsonar.jacoco.reportPaths=target/jacoco.exec \
     		      -Dsonar.junit.reportsPaths=target/surefire-reports"
