@@ -42,20 +42,10 @@ pipeline
             
              
             steps {
-		        script {
-          // requires SonarQube Scanner 2.8+
-          scannerHome = tool 'SonarQube Scanner 2.8'
-        }
-        withSonarQubeEnv('SonarQube') {
-          sh "${scannerHome}/bin/sonar-scanner"  
-	}
-		    
-               // withSonarQubeEnv('SonarQube') {
-              //     sh "mvn clean install sonar:sonar"
-                   // sh "mvn sonar:sonar -Dsonar.login='e1ddcc1c5d09f8131f66537b11a48dd95387c806'"
-	       //   sh "mvn sonar:sonar"
-                   
-               // }
+		      	    
+               withSonarQubeEnv('SonarQube') {
+                  sh "mvn sonar:sonar"
+	       }
             }
         }
         
