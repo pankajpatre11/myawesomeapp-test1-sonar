@@ -50,7 +50,7 @@ pipeline
                       file: "target/maven-project-${mavenPom.version}.war",
                       type: 'war'
                      ]],
-                    credentialsId: 'nexusid',
+                    credentialsId: 'nexusid1',
                     groupId: 'com.example',
                     nexusUrl: '35.172.201.214:8081',
                     nexusVersion: 'nexus3',
