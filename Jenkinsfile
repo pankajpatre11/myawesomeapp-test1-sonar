@@ -12,27 +12,27 @@ pipeline {
   }
   stages {
     stage('Build') {
-      steps {
+    
         sh script: 'mvn clean package'
-      }
+      
     }
 
     stage('SonarQube analysis') {
 
-      steps {
+   
 
         withSonarQubeEnv('SonarQube') {
           sh "mvn sonar:sonar\
 		      -Dsonar.java.coveragePlugin=jacoco \
                       -Dsonar.jacoco.reportPaths=target/jacoco.exec \
     		      -Dsonar.junit.reportsPaths=target/surefire-reports"
-        }
+       
       }
     }
 
     stage('Upload War To Repo') {
       steps {
-        script {
+      
           def mavenPom = readMavenPom file: 'MyAwesomeApp/pom.xml'
           def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "maven-snapshots" : "maven-releases"
           nexusArtifactUploader artifacts: [
@@ -49,23 +49,23 @@ pipeline {
             protocol: 'http',
             repository: nexusRepoName,
             version: "${mavenPom.version}"
-        }
+      
       }
     }
 
     stage('Build Docker image') {
       steps {
-        script {
+    
           dockerImage = docker.build(imageName)
-        }
+    
       }
     }
     stage('Upload Docker image into Repo') {
       steps {
-        script {
+ 
           docker.withRegistry('http://' + registry, registryCredentials) {
             dockerImage.push("latest")
-          }
+        
         }
       }
     }
