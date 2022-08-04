@@ -44,7 +44,7 @@ pipeline
                 withSonarQubeEnv('SonarQube') {
 	            sh "echo $SONAR_TOKEN"
                     sh "mvn clean install"
-                    sh "mvn sonar:sonar -Dsonar.login=${env.SONAR_TOKEN}"
+                    sh "mvn sonar:sonar -Dsonar.login=${SONAR_TOKEN}"
                    
                 }
             }
