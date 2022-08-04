@@ -3,10 +3,6 @@ pipeline {
 
   environment {
     SONAR_TOKEN = "${SONAR_TOKEN}"
-    SONAR = "sonarrr"
-    GIT_COMMIT_SHORT = sh(
-      script: "printf \$(git rev-parse --short ${GIT_COMMIT})",
-      returnStdout: true)
     imageName = "pankajpatre11/myapp"
     registryCredentials = "dockerhub"
     registry = "18.208.249.204:8083"
@@ -41,9 +37,8 @@ pipeline {
 
       steps {
         withSonarQubeEnv('SonarQube') {
-          sh "echo $SONAR_TOKEN"
           sh "mvn clean install"
-          sh "mvn sonar:sonar -Dsonar.login=${SONAR_TOKEN}"
+          sh "mvn sonar:sonar"
 
         }
       }
