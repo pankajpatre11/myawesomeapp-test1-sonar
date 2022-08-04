@@ -4,7 +4,7 @@ pipeline
 
     environment{
         imageName = "pankajpatre11/myapp"
-        registryCredentials = "dockerhub"
+        registryCredentials = "nexusid"
         registry = "54.226.252.254:8083"
         dockerImage = ''
     }
@@ -76,18 +76,17 @@ pipeline
         {
             steps
             {
-                script{ 
+                // script{ 
 		//	sh 'docker tag myapp pankajpatre11/myapp'			
 		//	sh 'docker login -u pankajpatre11 -p Pankaj@2211' 
 		//        sh 'docker push pankajpatre11/myapp' 
 		//	sh 'pwd'
-                  docker.withRegistry("https://registry+", "nexusid")
-                  {
-	          //sh 'docker tag myapp docker.io/myapp'
-                  //sh 'docker images'
-                  dockerImage.push("latest")
-                   }
-                }
+               script{
+                     docker.withRegistry('http://'+registry, registryCredentials)
+                    {
+                     dockerImage.push("latest")
+                     }
+	       }
             }
          }	    
 	    
