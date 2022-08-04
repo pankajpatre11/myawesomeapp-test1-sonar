@@ -28,7 +28,7 @@ node {
     stage('Build Docker image') {
     
  
-          dockerImage = docker.build(imageName)
+          dockerImage = docker.build("myapp")
     
     }
     stage('Upload Docker image into Repo') {
