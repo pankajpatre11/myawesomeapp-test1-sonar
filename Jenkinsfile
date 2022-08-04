@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh script: 'mvn clean package'
+        sh script: 'mvn -f MyAwesomeApp/pom.xml clean package'
       }
     }
 
@@ -22,7 +22,7 @@ pipeline {
       steps {
 
         withSonarQubeEnv('SonarQube') {
-          sh "mvn sonar:sonar\
+          sh "mvn -f MyAwesomeApp/pom.xml sonar:sonar\
 		      -Dsonar.java.coveragePlugin=jacoco \
                       -Dsonar.jacoco.reportPaths=target/jacoco.exec \
     		      -Dsonar.junit.reportsPaths=target/surefire-reports"
@@ -33,7 +33,7 @@ pipeline {
     stage('Upload War To Repo') {
       steps {
         script {
-          def mavenPom = readMavenPom file: 'pom.xml'
+          def mavenPom = readMavenPom file: 'MyAwesomeApp/pom.xml'
           def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "maven-snapshots" : "maven-releases"
           nexusArtifactUploader artifacts: [
               [artifactId: 'maven-project',
