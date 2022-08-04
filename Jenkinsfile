@@ -4,7 +4,7 @@ pipeline
 
     environment{
 	//SONAR_TOKEN = "ebe715a7d0fdd4ffb924ae703699a6131009211a"
-	SONAR_TOKEN = "${SONAR_TOKEN}"
+	SONAR_TOKEN = "$SONAR_TOKEN"
 	GIT_COMMIT_SHORT = sh(
      script: "printf \$(git rev-parse --short ${GIT_COMMIT})",
      returnStdout: true)
