@@ -44,7 +44,10 @@ pipeline
             steps {
 		      	    
                withSonarQubeEnv('SonarQube') {
-                  sh "mvn sonar:sonar"
+                  sh "mvn sonar:sonar\
+		      -Dsonar.java.coveragePlugin=jacoco \
+                      -Dsonar.jacoco.reportPaths=target/jacoco.exec \
+    		      -Dsonar.junit.reportsPaths=target/surefire-reports"
 	       }
             }
         }
