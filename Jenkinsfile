@@ -37,7 +37,7 @@ pipeline
                    }
 		  }
                             
- stage('SonarQube analysis') {
+         stage('SonarQube analysis') {
             
              
             steps {
@@ -103,7 +103,7 @@ pipeline
             }
          }	    
 	    
-  stage ('K8S Deploy') {
+      stage ('K8S Deploy') {
 	      steps{
        
                 kubernetesDeploy(
