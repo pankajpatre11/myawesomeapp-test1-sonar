@@ -26,19 +26,17 @@ node {
         }
         
     stage('Build Docker image') {
-      steps {
+    
  
           dockerImage = docker.build(imageName)
-      
-      }
+    
     }
     stage('Upload Docker image into Repo') {
-      steps {
+  
       
           docker.withRegistry('http://' + registry, registryCredentials) {
             dockerImage.push("latest")
-      
-        }
+     
       }
     }
 
