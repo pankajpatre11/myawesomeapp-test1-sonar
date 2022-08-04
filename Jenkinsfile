@@ -3,7 +3,7 @@ pipeline
     agent any
 
     environment{
-	SONAR_TOKEN = "ebe715a7d0fdd4ffb924ae703699a6131009211a"
+	//SONAR_TOKEN = "ebe715a7d0fdd4ffb924ae703699a6131009211a"
 	GIT_COMMIT_SHORT = sh(
      script: "printf \$(git rev-parse --short ${GIT_COMMIT})",
      returnStdout: true)
@@ -38,19 +38,19 @@ pipeline
                    }
 		  }
                             
-        stage('SonarQube analysis') {
+//        stage('SonarQube analysis') {
             
              
-            steps {
+//            steps {
 		      	    
-               withSonarQubeEnv('SonarQube') {
-                  sh "mvn sonar:sonar\
-		      -Dsonar.java.coveragePlugin=jacoco \
-                      -Dsonar.jacoco.reportPaths=target/jacoco.exec \
-    		      -Dsonar.junit.reportsPaths=target/surefire-reports"
-	       }
-            }
-        }
+//               withSonarQubeEnv('SonarQube') {
+//                  sh "mvn sonar:sonar\
+//		      -Dsonar.java.coveragePlugin=jacoco \
+//                      -Dsonar.jacoco.reportPaths=target/jacoco.exec \
+//    		      -Dsonar.junit.reportsPaths=target/surefire-reports"
+//	       }
+//            }
+//        }
         
 
 
